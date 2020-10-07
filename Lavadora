@@ -1,0 +1,27 @@
+package electrodomestico;
+public class Lavadora extends Electrodomestico{
+    
+    int PrecioFinal;
+    private static int Carga = 5;
+    
+    public Lavadora(double PrecioBase, String Color, char ConsumoEnergetico, double Peso, int Carga) {
+        super(PrecioBase, Color, ConsumoEnergetico, Peso);
+        this.Carga = Carga;
+    }
+    
+    public Lavadora(double PrecioBase, double Peso){
+        super(PrecioBase, Peso);
+    }
+    
+    public void precioFinal(int Carga){
+        if (Carga > 10) {
+            PrecioFinal = 30;
+        }
+        else {
+            PrecioFinal = 0;
+        }            
+    }
+    public int getCarga(){
+        return Carga;
+    }    
+}
