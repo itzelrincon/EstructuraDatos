@@ -1,0 +1,108 @@
+package electrodomestico;
+public class Electrodomestico {
+
+    protected double PrecioBase = 100;
+    protected String Color = "blanco";
+    protected char ConsumoEnergetico = 'F';
+    protected double Peso = 5.0;
+    int PrecioFinalCE;
+    int PrecioFinalPeso;
+    
+    //Método constructor
+    public Electrodomestico (double PrecioBase, String Color, char ConsumoEnergetico, double Peso){
+        this.PrecioBase = PrecioBase;
+        this.Color = Color;
+        this.ConsumoEnergetico = ConsumoEnergetico;
+        this.Peso = Peso;
+        ComprobarCE(ConsumoEnergetico);
+        ComprobarColor(Color);
+    }
+    
+    public Electrodomestico(double precio, double peso){
+         PrecioBase = precio;
+         Peso = peso;
+         
+    }
+    
+    public void ComprobarCE(char caracter){
+        char CE  [] = {'A','B','C','D','E','F'};
+        boolean Consumo = false;
+        for (int i = 0; i<CE.length; i++){
+            if (caracter == CE[i]){
+                Consumo = true;
+            } 
+        }
+        
+        if (Consumo == false){
+            ConsumoEnergetico = 'F';
+            
+        }            
+    }                 
+    
+    public void ComprobarColor(String color){
+        String CC [] = {"BLANCO", "AZUL", "NEGRO", "ROJO", "GRIS"};
+        boolean Colores = false;
+        for (int i=0; i<CC.length; i++){
+            if (color == CC[i]){
+                Colores = true;
+            }
+        }
+        
+        if (Colores == false){
+            Color = "BLANCO";
+        }
+    }
+    
+    public void PrecioFinal (char ConsumoEnergetico, double Peso){
+        
+        switch (ConsumoEnergetico) {
+            case 'A':
+                PrecioFinalCE = 100;
+                break;
+            case 'B':
+                PrecioFinalCE = 80;
+                break;
+            case 'C':
+                PrecioFinalCE = 60;
+                break;
+            case 'D':
+                PrecioFinalCE = 50;
+                break;
+            case 'E':
+                PrecioFinalCE = 30;
+                break;
+            case 'F':
+                PrecioFinalCE = 10;
+                break;
+            default:
+                break;
+        }
+        
+        if (Peso >0 || Peso <20){
+            PrecioFinalPeso = 10;
+        } else if (Peso >19 || Peso <50){
+            PrecioFinalPeso = 50;
+        } else if (Peso > 49 || Peso < 80){
+            PrecioFinalPeso = 50;
+        } else if (Peso > 79){
+            PrecioFinalPeso = 100;
+        }
+        
+    }
+    
+    public double getPrecioBase(){
+        return PrecioBase;
+    }
+    
+    public String getColor(){
+        return Color;
+    }
+    
+    public char getConsumoEnergetico(){
+        return ConsumoEnergetico;
+    }
+
+    public double getPeso(){
+        return Peso;
+    }    
+}
