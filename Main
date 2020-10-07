@@ -1,0 +1,44 @@
+package electrodomestico;
+
+import java.util.ArrayList;
+//import Electrodomestico.*;
+
+public class Main {
+    
+    public static ArrayList<Electrodomestico> Venta = new ArrayList<Electrodomestico>();
+    
+    public static void main (String[]args){
+        
+        Lavadora Mabe = new Lavadora(3000,"Azul",'D',40,15);
+        Venta.add(Mabe);
+        Lavadora Samsung = new Lavadora(6000,"NEGRO",'A',35,50);
+        Venta.add(Samsung);
+        Lavadora Wirpool = new Lavadora(4500,"AZUL",'C',20,70);
+        Venta.add(Wirpool);
+        Television Sony = new Television(3400,"GRIS",'E',5,true,40);
+        Venta.add(Sony);
+        Television LG = new Television(5000,"BLANCO",'B',10,false,20);
+        Venta.add(LG);
+        
+        System.out.println("*****ARTÍCULOS ELECTRODOMÉSTICOS*****");
+        double PrecioTotal = 0;
+        
+        for (int i=0; i<Venta.size(); i++){
+            PrecioTotal = PrecioTotal + Venta.get(i).getPrecioBase();
+        }
+        
+        for (Electrodomestico elemento:Venta){
+            System.out.println("\n|--------------------|");
+            System.out.println("|Producto: " + elemento.getClass().getSimpleName() + "  |");
+            System.out.println("|--------------------|");
+            System.out.println("**********CARACTERÍSTICAS***********");
+            System.out.println("Precio: $" + elemento.getPrecioBase());
+            System.out.println("Peso: " + elemento.getPeso());
+            System.out.println("Color: " + elemento.getColor());
+            System.out.println("Consumo Energético:" + elemento.getConsumoEnergetico());
+        }
+        
+        System.out.println("\n TOTAL: $" +PrecioTotal);
+    }
+    
+}
